@@ -1,6 +1,6 @@
 # 
 
-Windows 10 Forms Application to transfer files between a Windows PC and a retro DOS Computer
+#### Windows 10 Forms Application to transfer files between a Windows PC and a retro DOS Computer
 
 ![gallery](https://github.com/RoSchmi/Serial_FileTransfer_To_DOS/blob/master/pictures/SerialFileTransferTransmit.png)
 
