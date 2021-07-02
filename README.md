@@ -6,7 +6,7 @@ Windows 10 Forms Application to transfer files between a Windows PC and a retro 
 
 When playing with old DOS computers there is often the problem how to get files and programs on (and from)  the old machine since modern PCs don’t have floppy disk drives and the retro PCs don’t have USB or network.
 There are programs for file transfer via serial COM-ports available, which can be installed on Windows 10 PCs and have DOS compatible programs which can be run on the old DOS computer.
-I used FastLynx (FastLynx 3.3 Software Only (electronic download) — Sewell Direct )which is still commercially available and proved to work perfect for me. 
+I used FastLynx (https://sewelldirect.com/products/fastlynx-3-3-software-only-electronic-download )which is still commercially available and proved to work perfect for me. 
 But before you can use such a program there is the problem how to get the DOS program on the old PC.
 I found some advice in the internet (the recommended tools are in folder UtilityProgs of this repo):
 
