@@ -25,13 +25,18 @@ MODE COM1: 9600,N,8,1
 COPY COM1: MYFILE.TXT
 
 Fortunately I had GWBASIC on my DOS PC and so I could type in a short GWBASIC program that did the trick (COM1TOFI.BAS in folder UtilityProgs).
+
 To send the files from the Windows PC side, I made this Windows Forms application (‘Serial_FileTransfer_To_DOS’) which has the option to convert the files in a special hex-format before sending. This is needed to transfer binary files (e.g. programs).
+
 When the GWBASIC program ‘COM1TOFI.BAS’ is started on the DOS computer it is important to start GWBASIC with the /c: switch option to achive a larger buffer for the serial port communication:
+
 GWBASIC COM1TOFI /c:2048
-When a file is received on the DOS side it must be converted back from the special hex-format to the original content.
+
+When a file is received on the DOS side it must be converted back from the special hex-format to the original content. 
 This is done with the proram: ‘HEXTOBIN.BAS’
 
-To have a reliable transmission I used a slow baudrate of '1200', which resulted in a long duration of the file transfer. This procedure has to be done only one time. As soon as 'SL.EXE' from 'FastLynx' you can use this and file transfer is fun.
+To have a reliable transmission I used a slow baudrate of '1200', which resulted in a long duration of the file transfer. 
+This procedure has to be done only one time. As soon as 'SL.EXE' from 'FastLynx' you can use this and file transfer is fun.
 
 
 In the folder UtilityProgs you can find the two GWBASIC programs:
