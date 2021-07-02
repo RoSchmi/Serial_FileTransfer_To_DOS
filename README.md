@@ -36,7 +36,7 @@ When a file is received on the DOS side it must be converted back from the speci
 This is done with the proram: ‘HEXTOBIN.BAS’
 
 To have a reliable transmission I used a slow baudrate of '1200', which resulted in a long duration of the file transfer. 
-This procedure has to be done only one time. As soon as 'SL.EXE' from 'FastLynx' you can use this and file transfer is fun.
+This procedure has to be done only one time. As soon as 'SL.EXE' from 'FastLynx' is on your DOS computer, you can use this and file transfer is a fun.
 
 
 In the folder UtilityProgs you can find the two GWBASIC programs:
