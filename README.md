@@ -20,9 +20,9 @@ However the proposed way to receive the files to transfer on the DOS side with D
 
 Proposed way (example):
 
-MODE COM1: 9600,N,8,1
+#### MODE COM1: 9600,N,8,1
 
-COPY COM1: MYFILE.TXT
+#### COPY COM1: MYFILE.TXT
 
 Fortunately I had GWBASIC on my DOS PC and so I could type in a short GWBASIC program that did the trick (COM1TOFI.BAS in folder UtilityProgs).
 
@@ -30,7 +30,7 @@ To send the files from the Windows PC side, I made this Windows Forms applicatio
 
 When the GWBASIC program ‘COM1TOFI.BAS’ is started on the DOS computer it is important to start GWBASIC with the /c: switch option to achive a larger buffer for the serial port communication:
 
-GWBASIC COM1TOFI /c:2048
+#### GWBASIC COM1TOFI /c:2048
 
 When a file is received on the DOS side it must be converted back from the special hex-format to the original content. 
 This is done with the proram: ‘HEXTOBIN.BAS’
