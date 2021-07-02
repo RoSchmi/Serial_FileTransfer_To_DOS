@@ -19,7 +19,9 @@ http://oldcomputers.dyndns.org/public/pub/rechner/eaca/common/User-Clubs/Club-80
 However the proposed way to receive the files to transfer on the DOS side with DOS commands didn’t work in the case of my retro computer c’t86 (works on other DOS computers).
 
 Proposed way (example):
+
 MODE COM1: 9600,N,8,1
+
 COPY COM1: MYFILE.TXT
 
 Fortunately I had GWBASIC on my DOS PC and so I could type in a short GWBASIC program that did the trick (COM1TOFI.BAS in folder UtilityProgs).
