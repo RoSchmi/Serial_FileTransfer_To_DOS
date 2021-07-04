@@ -41,9 +41,11 @@ using System.IO.Ports;
 using System.Threading;
 using System.IO;
 using System.Xml;
+using System.Text.RegularExpressions;
 
 using SerialPortListener.Serial;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace SerialAccept
 {
@@ -63,9 +65,11 @@ namespace SerialAccept
         byte FirstByte = 0x00;
         byte SecondByte = 0x00;
         string DisplayString = "";
-        
+
         //################################################################
-       
+
+        
+
         bool DataReceived = false;
         
         string SerialDatsFolderName = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer);
@@ -123,6 +127,8 @@ namespace SerialAccept
 
             textBoxDsrState.BackColor = Color.White;
             textBoxDsrState_Rec.BackColor = Color.White;
+
+            textBoxSendChars.Text = "0x48,0x65,0x6C,0x6C,0x6F";
 
             akt_Path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             prm_Path = Path.Combine(akt_Path, @prmSubfolderName);
@@ -773,8 +779,68 @@ namespace SerialAccept
                 MessageBox.Show("At least one of the options (Send to COM-Port or Save Copy as File) must be selected");
                 return;
             }
+            string appendString = String.Empty;
+            if (radioButtonCR.Checked)
+            {
+                appendString = "\r";
+            }
+            if (radioButtonLF.Checked)
+            {
+                appendString = "\n";
+            }
+            if (radioButtonCRLF.Checked)
+            {
+                appendString = "\r\n";
+            }
+            if (radioButtonCtrlZ.Checked)
+            {
+                appendString = ((char)0x1A).ToString();
+            }
+            if (radioButtonHexChars.Checked)
+            {
+                string toSendString = textBoxSendChars.Text.Replace(" ", "");
+                toSendString = toSendString.ToLower();
+                string[] sendCharArr;
+                sendCharArr = toSendString.Split(',');
+                bool procError = false;
+                foreach (string charStr in sendCharArr)
+                {
+                    procError = (charStr.Length != 4) ? true : procError;
+                    procError = (charStr.StartsWith("0x")) ? procError : true;
+                }
+                if (procError)
+                {
+                    MessageBox.Show("Wrong Format for bytes to append 'Hex-Chars'\r\n Format must be like '0x48,0x65,0x65,0x6F' for 'Hello'");
+                    return;
+                }
 
-            _spManager.SendFile(FileToBeSentFilePath, checkBoxConvertToHex.Checked, checkBoxSendToCOM.Checked, checkBoxMakeCopyFile.Checked, Path.Combine(textBoxSerialDatsFolderName.Text, textBoxSerialDatName.Text), checkBoxDtrEnable.Checked, checkBoxRtsEnable.Checked, checkBoxRTSHandshake.Checked, (ushort)numericUpDownSendBetweenDelay.Value, (int)numericUpDownBeforeStartSend.Value);
+
+                int[] sendIntArr = new int[sendCharArr.Length];
+                for (int i = 0; i < sendCharArr.Length; i++)
+                {
+                    procError = Int32.TryParse(sendCharArr[i].Remove(0, 2), NumberStyles.HexNumber, CultureInfo.CurrentCulture, out sendIntArr[i]) ? procError : true;
+                }
+                if (procError)
+                {
+                    MessageBox.Show("Wrong Format for bytes to append 'Hex-Chars'\r\n Format must be like '0x48,0x65,0x6C,0c6C,0x6F' for 'Hello'");
+                    return;
+                }
+                else
+                {
+                    char[] sendByteArr = new char[sendCharArr.Length];
+                    for (int i = 0; i < sendCharArr.Length; i++)
+                    {
+                        sendByteArr[i] = (char)sendIntArr[i];
+                    }
+                    appendString = new String(sendByteArr);
+                    
+                }
+            }
+
+
+
+
+                _spManager.SendFile(FileToBeSentFilePath, appendString, checkBoxConvertToHex.Checked, checkBoxSendToCOM.Checked, checkBoxMakeCopyFile.Checked, Path.Combine(textBoxSerialDatsFolderName.Text, textBoxSerialDatName.Text), checkBoxDtrEnable.Checked, checkBoxRtsEnable.Checked, checkBoxRTSHandshake.Checked, (ushort)numericUpDownSendBetweenDelay.Value, (int)numericUpDownBeforeStartSend.Value);
         }
 
         #endregion
@@ -931,7 +997,51 @@ namespace SerialAccept
         {
 
         }
-        #endregion                             
+        #endregion
+
+        
+        /*
+        private void buttonSendChars_Click(object sender, EventArgs e)
+        {
+            string toSendString = textBoxSendChars.Text.Replace(" ", "");
+            toSendString = toSendString.ToLower();
+            string[] sendCharArr;    
+            sendCharArr = toSendString.Split(',');
+            bool procError = false;
+            foreach (string charStr in sendCharArr)
+            {
+                procError = (charStr.Length != 4) ? true : procError;
+                procError = (charStr.StartsWith("0x")) ? procError : true;          
+            }
+            if (procError)
+            {
+                MessageBox.Show("Wrong Format for Command 'Send Hex-Chars'\r\n Format must be like '0x48,0x65,0x65,0x6F' for 'Hello'");
+                return;
+            }
+            
+
+            int[] sendIntArr = new int[sendCharArr.Length];
+            for (int i = 0; i < sendCharArr.Length; i++)
+            {              
+                procError = Int32.TryParse(sendCharArr[i].Remove(0,2), NumberStyles.HexNumber, CultureInfo.CurrentCulture, out sendIntArr[i]) ? procError : true;         
+            }
+            if (procError)
+            {
+                MessageBox.Show("Wrong Format for Command 'Send Hex-Chars'\r\n Format must be like '0x48,0x65,0x65,0x6F' for 'Hello'");
+                return;
+            }
+            else 
+            {
+                byte[] sendByteArr = new byte[sendCharArr.Length];         
+                for (int i = 0; i < sendCharArr.Length; i++)
+                {
+                    sendByteArr[i] = (byte)sendIntArr[i];
+                }
+                sendBytes_do(sendByteArr);
+            }
+        }
+        */
+        
     }
 }
 

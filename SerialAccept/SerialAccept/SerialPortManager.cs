@@ -199,7 +199,7 @@ namespace SerialPortListener.Serial
         }
         
 
-        public bool SendFile(string file, bool convertToHex, bool sendToCOM, bool makeCopyFile, string copyFilePath, bool DtrEnable, bool RtsEnable, bool RTS_Handshake, UInt16 sendDelay, int startDelay)
+        public bool SendFile(string file, string appendString, bool convertToHex, bool sendToCOM, bool makeCopyFile, string copyFilePath, bool DtrEnable, bool RtsEnable, bool RTS_Handshake, UInt16 sendDelay, int startDelay)
         {
             System.IO.FileStream _FileStream = null;
             try
@@ -369,12 +369,13 @@ namespace SerialPortListener.Serial
                 }
             }
 
-            if (convertToHex)
+            if (!string.IsNullOrEmpty(appendString))
             {
-                //if (sendToCOM)
-                //    _serialPort.Write(new byte[1] { 0x1A }, 0, 1);
-                //if (makeCopyFile)
-                //    _CopyFileStream.Write(new byte[1] { 0x1A }, 0, 1);
+                byte[] bytesToAppend = UTF8Encoding.UTF8.GetBytes(appendString);
+                if (sendToCOM)
+                   _serialPort.Write(appendString);
+                if (makeCopyFile)
+                    _CopyFileStream.Write(bytesToAppend,0, bytesToAppend.Length);
             }
 
             

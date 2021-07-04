@@ -48,6 +48,15 @@
             this.checkBoxDtrEnable_Rec = new System.Windows.Forms.CheckBox();
             this.textBoxSaveMessage = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.radioButtonCRLF = new System.Windows.Forms.RadioButton();
+            this.radioButtonCtrlZ = new System.Windows.Forms.RadioButton();
+            this.radioButtonLF = new System.Windows.Forms.RadioButton();
+            this.radioButtonHexChars = new System.Windows.Forms.RadioButton();
+            this.radioButtonCR = new System.Windows.Forms.RadioButton();
+            this.radioButtonNothing = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxSendChars = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBoxDsrState = new System.Windows.Forms.TextBox();
             this.labelDSR = new System.Windows.Forms.Label();
@@ -100,6 +109,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBeforeStartSend)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSendBetweenDelay)).BeginInit();
@@ -296,6 +306,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox7);
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.textBoxSendChars);
             this.tabPage3.Controls.Add(this.groupBox6);
             this.tabPage3.Controls.Add(this.progressBar1);
             this.tabPage3.Controls.Add(this.progressBarWait);
@@ -317,6 +330,99 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Transmit";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.radioButtonCRLF);
+            this.groupBox7.Controls.Add(this.radioButtonCtrlZ);
+            this.groupBox7.Controls.Add(this.radioButtonLF);
+            this.groupBox7.Controls.Add(this.radioButtonHexChars);
+            this.groupBox7.Controls.Add(this.radioButtonCR);
+            this.groupBox7.Controls.Add(this.radioButtonNothing);
+            this.groupBox7.Location = new System.Drawing.Point(561, 163);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(107, 178);
+            this.groupBox7.TabIndex = 30;
+            this.groupBox7.TabStop = false;
+            // 
+            // radioButtonCRLF
+            // 
+            this.radioButtonCRLF.AutoSize = true;
+            this.radioButtonCRLF.Location = new System.Drawing.Point(8, 85);
+            this.radioButtonCRLF.Name = "radioButtonCRLF";
+            this.radioButtonCRLF.Size = new System.Drawing.Size(52, 17);
+            this.radioButtonCRLF.TabIndex = 1;
+            this.radioButtonCRLF.Text = "CRLF";
+            this.radioButtonCRLF.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCtrlZ
+            // 
+            this.radioButtonCtrlZ.AutoSize = true;
+            this.radioButtonCtrlZ.Location = new System.Drawing.Point(8, 108);
+            this.radioButtonCtrlZ.Name = "radioButtonCtrlZ";
+            this.radioButtonCtrlZ.Size = new System.Drawing.Size(89, 17);
+            this.radioButtonCtrlZ.TabIndex = 1;
+            this.radioButtonCtrlZ.Text = "Ctrl-Z ( 0x1A )";
+            this.radioButtonCtrlZ.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLF
+            // 
+            this.radioButtonLF.AutoSize = true;
+            this.radioButtonLF.Location = new System.Drawing.Point(8, 61);
+            this.radioButtonLF.Name = "radioButtonLF";
+            this.radioButtonLF.Size = new System.Drawing.Size(37, 17);
+            this.radioButtonLF.TabIndex = 1;
+            this.radioButtonLF.Text = "LF";
+            this.radioButtonLF.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonHexChars
+            // 
+            this.radioButtonHexChars.AutoSize = true;
+            this.radioButtonHexChars.Location = new System.Drawing.Point(8, 131);
+            this.radioButtonHexChars.Name = "radioButtonHexChars";
+            this.radioButtonHexChars.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonHexChars.TabIndex = 2;
+            this.radioButtonHexChars.Text = "Hex-Chars";
+            this.radioButtonHexChars.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCR
+            // 
+            this.radioButtonCR.AutoSize = true;
+            this.radioButtonCR.Location = new System.Drawing.Point(8, 33);
+            this.radioButtonCR.Name = "radioButtonCR";
+            this.radioButtonCR.Size = new System.Drawing.Size(40, 17);
+            this.radioButtonCR.TabIndex = 1;
+            this.radioButtonCR.Text = "CR";
+            this.radioButtonCR.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNothing
+            // 
+            this.radioButtonNothing.AutoSize = true;
+            this.radioButtonNothing.Checked = true;
+            this.radioButtonNothing.Location = new System.Drawing.Point(8, 10);
+            this.radioButtonNothing.Name = "radioButtonNothing";
+            this.radioButtonNothing.Size = new System.Drawing.Size(62, 17);
+            this.radioButtonNothing.TabIndex = 0;
+            this.radioButtonNothing.TabStop = true;
+            this.radioButtonNothing.Text = "Nothing";
+            this.radioButtonNothing.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(486, 170);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 20);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Append:";
+            // 
+            // textBoxSendChars
+            // 
+            this.textBoxSendChars.Location = new System.Drawing.Point(674, 294);
+            this.textBoxSendChars.Name = "textBoxSendChars";
+            this.textBoxSendChars.Size = new System.Drawing.Size(139, 20);
+            this.textBoxSendChars.TabIndex = 27;
             // 
             // groupBox6
             // 
@@ -530,7 +636,7 @@
             this.tbDataSend.Multiline = true;
             this.tbDataSend.Name = "tbDataSend";
             this.tbDataSend.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbDataSend.Size = new System.Drawing.Size(602, 199);
+            this.tbDataSend.Size = new System.Drawing.Size(447, 199);
             this.tbDataSend.TabIndex = 2;
             // 
             // textBoxFileToBeSent
@@ -767,6 +873,8 @@
             this.groupBox4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBeforeStartSend)).EndInit();
@@ -852,6 +960,15 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxSendChars;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton radioButtonCtrlZ;
+        private System.Windows.Forms.RadioButton radioButtonCRLF;
+        private System.Windows.Forms.RadioButton radioButtonLF;
+        private System.Windows.Forms.RadioButton radioButtonCR;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.RadioButton radioButtonHexChars;
+        private System.Windows.Forms.RadioButton radioButtonNothing;
     }
 }
 
