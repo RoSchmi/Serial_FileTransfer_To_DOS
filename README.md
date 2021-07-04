@@ -31,7 +31,8 @@ Each character is expressed as two characters, where the first represents the hi
 So, as an example, the character Ctrl-Z (hex 0x1A) in the orignal file is converted into two characters, '1' (hex 0x31) and 'A' (hex 0x42).
 Each block of the data in the transmission format starts with an ':' and ends with an CRLF (0x0D, 0x0A).
 
-To achieve that the receiving of data is terminated by the DOS machine, at the end of the transmission a Ctrl-Z (hex 0x1A) must come from the sender.
+To achieve that the receiving of data is terminated by the DOS machine, at the end of the transmission a 
+#### Ctrl-Z (hex 0x1A) must come from the sender.
 
 The Application of this repo (Serial_FileTransfer_To_DOS) has the option to append a Ctrl-Z after the transmision of the content of the file to terminate the receiving process on the DOS side.
 
@@ -58,7 +59,11 @@ COM1TOFI.BAS receives bytes which come in over a COM Port and stores them to a f
 
 HEXTOBIN.BAS converts a received file which is formated in the special hex-format back to the content before the conversion.
 
-In the folder 'binaries' you can find the application as an .exe file 'SerialFileTransferToDos.exe' SHA1-hash: 5CDAF6C9DA68272BB5A292EE6E270CC68806D8DB
+In the folder 'binaries' you can find the application as an .exe file:
+
+#### SerialFileTransferToDos.exe
+
+SHA1-hash: 5CDAF6C9DA68272BB5A292EE6E270CC68806D8DB
 
 
 
